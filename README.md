@@ -19,8 +19,8 @@ Claude Code skills for learning-focused development — active recall, guided im
 ## Install
 
 ```bash
-npx skills add rodbv/socratic-skills:quiz-me
-npx skills add rodbv/socratic-skills:guide-me
+npx skills add rodbv/socratic-skills/skills/quiz-me
+npx skills add rodbv/socratic-skills/skills/guide-me
 ```
 
 ---
