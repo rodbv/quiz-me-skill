@@ -22,6 +22,10 @@ Instead of explaining code to you, it reads an artifact and asks questions one a
 - **Spec** — quizzes on a design doc before you implement it
 - **Plan** — quizzes on an implementation plan and architectural decisions
 
+### Why
+
+When using AI agents to write code, it's easy to accept changes you don't fully understand. This skill creates a forcing function: you can't just rubber-stamp a diff. It asks you *why* the code works, what breaks if you remove a line, what a migration does to existing data. If you can't answer, you learn before it ships.
+
 ### Usage
 
 ```
@@ -84,10 +88,6 @@ Correct — B-tree indexes speed up equality lookups and range scans.
 They don't help with LIKE '%partial%' queries or full-table aggregations.
 ```
 
-### Why
-
-When using AI agents to write code, it's easy to accept changes you don't fully understand. This skill creates a forcing function: you can't just rubber-stamp a diff. It asks you *why* the code works, what breaks if you remove a line, what a migration does to existing data. If you can't answer, you learn before it ships.
-
 ---
 
 ## guide-me
@@ -101,6 +101,12 @@ Works from a spec or implementation plan. Breaks the work into steps, presents o
 - **B) Test-after** — implement, then add tests before the next step
 - **C) Mixed** (default) — TDD for pure logic, skip for glue/config
 - **D) No tests** — skip tests entirely
+
+### Why
+
+The fastest way to understand something is to build it yourself. This skill prevents the temptation of asking Claude to "just write this one thing" — it holds the line so you do the learning. Use it when you have a spec ready and want to implement it as a deliberate practice session.
+
+Pairs well with `quiz-me` (active recall before you build) and `grill-me` (stress-tests your design decisions).
 
 ### Usage
 
@@ -151,12 +157,6 @@ implementer reads that? Is there a way to make the contract more enforceable?
 That's worth thinking through. What do you gain from Protocol vs ABC here?
 Which one lets an existing class satisfy the interface without inheriting from it?
 ```
-
-### Why
-
-The fastest way to understand something is to build it yourself. This skill prevents the temptation of asking Claude to "just write this one thing" — it holds the line so you do the learning. Use it when you have a spec ready and want to implement it as a deliberate practice session.
-
-Pairs well with `quiz-me` (active recall before you build) and `grill-me` (stress-tests your design decisions).
 
 ---
 
