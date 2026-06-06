@@ -151,19 +151,12 @@ Pairs well with `quiz-me` (active recall before you build) and [`grill-me`](http
 
 c
 
-I've planned 7 steps. Let's start with Step 1.
+I've planned 9 steps. Let's start with Step 1.
 
-─── Step 1: Pydantic models + DataProvider protocol ───
+─── Step 1: WorkItem model ───
 
-Implement WorkItem, DeployEvent, and DataProvider in kwando_lib/models.py.
-WorkItem needs: id (str), started_at and finished_at (datetime | None), item_type (str).
-DeployEvent needs: deployed_at (datetime), succeeded (bool).
-DataProvider is a Protocol with two methods — both accept `since: datetime`
-and return a list. The protocol contract has one rule you'll need to encode
-in the docstring, not the type signature.
-
-This step is logic-heavy — write a test for DataProvider first (hint: test
-what a provider with no deployment data should return).
+Implement `WorkItem` in kwando_lib/models.py — a Pydantic model with four fields:
+id (str), started_at and finished_at (datetime | None), item_type (str).
 
 Let me know when you're done, or say 'hint' if you get stuck.
 
@@ -171,9 +164,43 @@ Let me know when you're done, or say 'hint' if you get stuck.
 
 [reads git diff]
 
-Looks solid. One question: your fetch_deployments docstring says
-"returns empty list if no data" — but what guarantees a third-party
-implementer reads that? Is there a way to make the contract more enforceable?
+Looks good. One question: both datetime fields are Optional — what happens
+if you construct a WorkItem without passing them at all? Is that the intended default?
+
+> yeah, items in progress have no finished_at yet
+
+Makes sense. Move on to Step 2.
+
+─── Step 2: DeployEvent model ───
+
+Add `DeployEvent` to the same file — two fields: deployed_at (datetime), succeeded (bool).
+
+Let me know when you're done.
+
+> done
+
+[reads git diff]
+
+Clean. Step 3 is where the interesting design starts.
+
+─── Step 3: DataProvider protocol ───
+
+Add a `DataProvider` Protocol with two methods, both accepting `since: datetime`
+and returning a list. The protocol has one contract rule you can't express in the
+type signature — encode it in the docstring.
+
+This step has real logic — write a test for DataProvider first:
+what should a provider with no deployment data return?
+
+Let me know when you're done, or say 'hint' if you get stuck.
+
+> done
+
+[reads git diff]
+
+Your fetch_deployments docstring says "returns empty list if no data" — but what
+guarantees a third-party implementer reads that? Is there a way to make the contract
+more enforceable?
 
 > maybe an abstract base class instead of Protocol?
 

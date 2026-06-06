@@ -138,19 +138,12 @@ Combina bem com `quiz-me` (recordação ativa antes de construir) e [`grill-me`]
 
 c
 
-Planejei 7 etapas. Vamos começar com a Etapa 1.
+Planejei 9 etapas. Vamos começar com a Etapa 1.
 
-─── Etapa 1: Models Pydantic + protocolo DataProvider ───
+─── Etapa 1: Model WorkItem ───
 
-Implemente WorkItem, DeployEvent e DataProvider em kwando_lib/models.py.
-WorkItem precisa de: id (str), started_at e finished_at (datetime | None), item_type (str).
-DeployEvent precisa de: deployed_at (datetime), succeeded (bool).
-DataProvider é um Protocol com dois métodos — ambos aceitam `since: datetime`
-e retornam uma lista. O contrato do protocolo tem uma regra que você precisará
-expressar na docstring, não na assinatura de tipo.
-
-Esta etapa tem lógica pesada — escreva um teste para DataProvider primeiro
-(dica: teste o que um provider sem dados de deploy deve retornar).
+Implemente `WorkItem` em kwando_lib/models.py — um model Pydantic com quatro campos:
+id (str), started_at e finished_at (datetime | None), item_type (str).
 
 Me avise quando terminar, ou diga 'dica' se travar.
 
@@ -158,10 +151,43 @@ Me avise quando terminar, ou diga 'dica' se travar.
 
 [lê git diff]
 
-Parece sólido. Uma pergunta: sua docstring de fetch_deployments diz
-"retorna lista vazia se não houver dados" — mas o que garante que um
-implementador terceiro vai ler isso? Há uma forma de tornar o contrato
-mais enforçável?
+Ficou bom. Uma pergunta: os dois campos datetime são Optional — o que acontece
+se você construir um WorkItem sem passá-los? É esse o comportamento esperado?
+
+> sim, itens em andamento não têm finished_at ainda
+
+Faz sentido. Partindo para a Etapa 2.
+
+─── Etapa 2: Model DeployEvent ───
+
+Adicione `DeployEvent` no mesmo arquivo — dois campos: deployed_at (datetime), succeeded (bool).
+
+Me avise quando terminar.
+
+> pronto
+
+[lê git diff]
+
+Limpo. A Etapa 3 é onde o design fica interessante.
+
+─── Etapa 3: Protocolo DataProvider ───
+
+Adicione um Protocol `DataProvider` com dois métodos, ambos aceitando `since: datetime`
+e retornando uma lista. O protocolo tem uma regra de contrato que não dá para expressar
+na assinatura de tipo — coloque na docstring.
+
+Esta etapa tem lógica real — escreva um teste para DataProvider primeiro:
+o que um provider sem dados de deploy deve retornar?
+
+Me avise quando terminar, ou diga 'dica' se travar.
+
+> pronto
+
+[lê git diff]
+
+Sua docstring de fetch_deployments diz "retorna lista vazia se não houver dados" —
+mas o que garante que um implementador terceiro vai ler isso? Há uma forma de tornar
+o contrato mais enforçável?
 
 > talvez uma classe base abstrata em vez de Protocol?
 
