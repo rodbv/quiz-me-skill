@@ -1,4 +1,4 @@
-# rodbv/socratic-skills
+# Socratic Skills
 
 [🇧🇷 Português](README.pt-br.md)
 
