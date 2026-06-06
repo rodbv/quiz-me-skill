@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "guide-me": {
+      "source": "rodbv/socratic-skills",
+      "sourceType": "github",
+      "skillPath": "skills/guide-me/SKILL.md",
+      "computedHash": "203e948241879eca314d4e8ab31a2b6f425ced8111f53374744ca8f2b21b4ce9"
+    },
+    "quiz-me": {
+      "source": "rodbv/socratic-skills",
+      "sourceType": "github",
+      "skillPath": "skills/quiz-me/SKILL.md",
+      "computedHash": "4794ec9db0f9e7f733a8d3f214ef012ac7ce255fb443a0c0b01c939b4c1a1b4a"
+    }
+  }
+}
