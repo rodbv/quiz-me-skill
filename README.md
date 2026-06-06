@@ -1,6 +1,18 @@
 # rodbv/socratic-skills
 
-Claude Code skills for learning-focused development — active recall, guided implementation, and Socratic feedback loops.
+Claude Code skills for learning-focused development — active recall, guided implementation, and <a href="https://en.wikipedia.org/wiki/Socratic_method" target="_blank">Socratic feedback loops</a>.
+
+## Skills
+
+<table><tr>
+<td width="75%">
+<p><strong><a href="#quiz-me">quiz-me</a></strong> — Quizzes you on a code diff, spec, or plan one question at a time, probing with a follow-up before correcting a wrong answer</p>
+<p><strong><a href="#guide-me">guide-me</a></strong> — Walks you through implementing a spec step by step, checks your work, and gives hints — without ever writing code for you</p>
+</td>
+<td align="center" width="25%">
+<img src="socrates-black.svg" alt="Socrates" width="160" />
+</td>
+</tr></table>
 
 ## Install
 
