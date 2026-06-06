@@ -38,54 +38,60 @@ When using AI agents to write code, it's easy to accept changes you don't fully 
 
 ### Example
 
-**Spec mode** (`/quiz-me on the spec`):
-
-```
-Question 1 of 6:
-ForecastSnapshot stores throughput_snapshot as a JSONField rather than
-normalizing it into rows. Why?
-
-> so we know the original dataset used to produce the forecast
-
-Correct. Storing the raw data means the forecast is fully reproducible —
-you can re-run it later and get the same result, and you can see exactly
-what changed between forecasts (e.g. throughput dropped, a slow item was
-added). If you only stored the p50/p85/p95 dates, you'd know the forecast
-changed but not why.
-
-Question 2 of 6:
-DataProvider is defined as a Protocol, not an abstract base class.
-What's the practical difference for someone building a Jira provider?
-
-> less boilerplate, no need to inherit from base class
-
-You've got the ergonomics right. But what does "no need to inherit" mean
-for an existing Jira client class that already has the right methods —
-does it need to change at all to satisfy the interface?
-
-> Protocol will require no changes as long as the interface is respected
-
-Exactly — structural subtyping. The class doesn't know it's a DataProvider,
-it just happens to match the shape. The tradeoff: with ABC, Python raises
-at instantiation if a method is missing. With Protocol, that safety moves
-to the type checker.
-
-...
-
-Final score: 5.5/6 — strong. You knew the architecture cold.
-```
-
-**Code mode** (`/quiz-me before I commit`):
+**Spec mode** (`/quiz-me on the spec`) — showing the Socratic follow-up on a partial answer:
 
 ```
 Question 1 of 5:
-You added db_index=True to the email field. Under what query patterns
-does this actually help, and when would it make no difference?
+The spec stores total_price directly on the Order model rather than
+computing it from line items each time. Why?
 
-> when filtering or sorting by email, like login lookups
+> so we don't recalculate it on every page load
 
-Correct — B-tree indexes speed up equality lookups and range scans.
-They don't help with LIKE '%partial%' queries or full-table aggregations.
+Performance is part of it. But there's a more important reason —
+what happens to a computed total if a product's price changes later?
+
+> the old orders would show the new price instead of what was charged
+
+Exactly. Denormalizing the total isn't just a performance call —
+it's a correctness requirement. The price at purchase time is a legal
+record. A computed total would silently change as prices update.
+
+Question 2 of 5:
+The spec uses a slug field for post URLs instead of a numeric ID. What
+breaks if someone renames a post after it's been published?
+
+> the URL changes, old links break
+
+Right. What should the spec say about this — is it addressed?
+
+> ... I don't think it is
+
+That's a real gap. The spec should either forbid renaming after publish,
+keep the original slug and add a separate display title, or handle
+redirects from old slugs. Worth raising before implementing.
+
+...
+
+Final score: 4/5 — solid. Found one genuine spec gap in Q2.
+```
+
+**Code mode** (`/quiz-me` on a diff that added `select_related`):
+
+```
+Question 1 of 4:
+This diff adds select_related('author') to the post queryset. What
+problem was this solving, and how does select_related fix it?
+
+> it was doing a query for every post to get the author, now it's one query
+
+Correct — that's the N+1 problem. select_related does a SQL JOIN so
+author data comes back in the same query. When would you use
+prefetch_related instead?
+
+> when it's a many-to-many or reverse FK relationship
+
+Exactly. JOIN doesn't work cleanly for those — prefetch_related runs
+a second query and does the joining in Python.
 ```
 
 ---
