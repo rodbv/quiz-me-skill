@@ -112,7 +112,7 @@ Works from a spec or implementation plan. Breaks the work into steps, presents o
 
 The fastest way to understand something is to build it yourself. This skill prevents the temptation of asking Claude to "just write this one thing" — it holds the line so you do the learning. Use it when you have a spec ready and want to implement it as a deliberate practice session.
 
-Pairs well with `quiz-me` (active recall before you build) and `grill-me` (stress-tests your design decisions).
+Pairs well with `quiz-me` (active recall before you build) and [`grill-me`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md) (stress-tests your design decisions).
 
 ### Usage
 
