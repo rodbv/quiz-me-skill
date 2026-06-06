@@ -68,14 +68,14 @@ Scale to what's in the artifact — a two-line fix warrants different depth than
 
 ## Step 4: Run the quiz
 
-**Socratic mode:**
+**One-at-a-time mode:**
 1. Ask one question
 2. Wait for the answer
-3. Grade it: correct / partially correct / incorrect + brief explanation of what they got right or missed
+3. Grade it — see Grading below
 4. Move to the next
 5. Final summary: X/Y + one observation
 
-**Dump mode:**
+**All-at-once mode:**
 1. List all questions numbered
 2. Wait for all answers
 3. Grade each in sequence with feedback
@@ -85,7 +85,14 @@ Scale to what's in the artifact — a two-line fix warrants different depth than
 
 Correct = understands the *why*, not just the *what*. Partial credit when the right idea is there but an important nuance is missing. Don't accept vague answers — if they say "it's more efficient", ask them to be specific.
 
-If they get something wrong, one or two sentences of correction, then move on. Not a lecture.
+**On partial or wrong answers (one-at-a-time mode only):** ask one follow-up question that exposes the gap rather than explaining it — let them reason to the answer. Only reveal the correction if they miss the follow-up too.
+
+Good follow-up patterns:
+- "You said X — what happens when [edge case Y]? Does your answer still hold?"
+- "If that were true, what would [specific scenario] do?"
+- "What does the spec say about [the thing they glossed over]?"
+
+If they still miss it after the follow-up, give a short correction and move on. Not a lecture.
 
 ## Tone
 
