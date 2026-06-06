@@ -171,4 +171,4 @@ sem precisar herdar dela?
 
 ## Créditos
 
-Desenvolvido por [@rodbv](https://github.com/rodbv). Inspirado no problema de vibe-coding sem entender o que está sendo feito.
+Desenvolvido por [@rodbv](https://github.com/rodbv). Inspirado no problema de vibe-coding sem entender o que está sendo feito, e pela skill [grill-me](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md) do [@mattpocock](https://github.com/mattpocock).

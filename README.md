@@ -182,4 +182,4 @@ Which one lets an existing class satisfy the interface without inheriting from i
 
 ## Credits
 
-Built by [@rodbv](https://github.com/rodbv). Inspired by the problem of vibe-coding without understanding.
+Built by [@rodbv](https://github.com/rodbv). Inspired by the problem of vibe-coding without understanding, and by [@mattpocock](https://github.com/mattpocock)'s [grill-me](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md) skill.
