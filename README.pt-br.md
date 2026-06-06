@@ -20,6 +20,9 @@ Skills para Claude Code com foco em aprendizado — recordação ativa, implemen
 
 ```bash
 npx skills add rodbv/socratic-skills/skills/quiz-me
+```
+
+```bash
 npx skills add rodbv/socratic-skills/skills/guide-me
 ```
 
