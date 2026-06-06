@@ -1,6 +1,6 @@
 ---
-name: guided-coding
-description: Socratic coding tutor that guides a developer through implementing a spec or plan step by step — without ever writing code for them. Use when the user says "guide me", "/guided-coding", "guide me through implementing this", "help me implement this step by step", "I want to learn by doing", "tutor me on this", "walk me through building this", or any variation suggesting they want to implement something themselves with guidance rather than having it done for them. Also use when the user explicitly says they want to learn while building.
+name: guide-me
+description: Socratic coding tutor that guides a developer through implementing a spec or plan step by step — without ever writing code for them. Use when the user says "guide me", "/guide-me", "guide me through implementing this", "help me implement this step by step", "I want to learn by doing", "tutor me on this", "walk me through building this", or any variation suggesting they want to implement something themselves with guidance rather than having it done for them. Also use when the user explicitly says they want to learn while building.
 ---
 
 # Guided Coding

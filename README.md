@@ -6,7 +6,7 @@ Claude Code skills for learning-focused development — active recall, guided im
 
 ```bash
 npx skills add rodbv/socratic-skills:quiz-me
-npx skills add rodbv/socratic-skills:guided-coding
+npx skills add rodbv/socratic-skills:guide-me
 ```
 
 ---
@@ -90,7 +90,7 @@ When using AI agents to write code, it's easy to accept changes you don't fully 
 
 ---
 
-## guided-coding
+## guide-me
 
 A Socratic coding tutor that guides you through implementing a spec or plan entirely on your own — without writing a single line of code for you.
 
@@ -105,10 +105,10 @@ Works from a spec or implementation plan. Breaks the work into steps, presents o
 ### Usage
 
 ```
-/guided-coding                    # guide me through the latest spec/plan
-/guided-coding on the spec        # guide me through docs/superpowers/specs/ (latest)
-/guided-coding on the plan        # guide me through docs/superpowers/plans/ (latest)
-/guided-coding <path/to/file.md>  # guide me through a specific file
+/guide-me                    # guide me through the latest spec/plan
+/guide-me on the spec        # guide me through docs/superpowers/specs/ (latest)
+/guide-me on the plan        # guide me through docs/superpowers/plans/ (latest)
+/guide-me <path/to/file.md>  # guide me through a specific file
 ```
 
 ### Example
