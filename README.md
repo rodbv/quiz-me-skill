@@ -1,12 +1,12 @@
-# rodbv/skills
+# rodbv/socratic-skills
 
-Claude Code skills for learning-focused development. Install any skill individually, or all at once.
+Claude Code skills for learning-focused development — active recall, guided implementation, and Socratic feedback loops.
 
 ## Install
 
 ```bash
-npx skills add rodbv/skills:quiz-me
-npx skills add rodbv/skills:guided-coding
+npx skills add rodbv/socratic-skills:quiz-me
+npx skills add rodbv/socratic-skills:guided-coding
 ```
 
 ---
@@ -15,12 +15,12 @@ npx skills add rodbv/skills:guided-coding
 
 Quizzes you on code changes, specs, or plans to verify genuine understanding — especially useful when working with AI-generated code.
 
-Instead of explaining code to you, it reads an artifact and asks Socratic questions to test what you actually know. Forces active recall before you commit, push, or start building.
+Instead of explaining code to you, it reads an artifact and asks questions one at a time to test what you actually know. On partial or wrong answers it probes with a follow-up before correcting — you reason to the answer rather than being told it. Forces active recall before you commit, push, or start building.
 
-**Three modes:**
-- **Code mode** (default) — quizzes on staged/unstaged git changes before a commit
-- **Spec mode** — quizzes on a design doc before you implement it
-- **Plan mode** — quizzes on an implementation plan and architectural decisions
+**Three artifact types:**
+- **Code** (default) — quizzes on staged/unstaged git changes before a commit
+- **Spec** — quizzes on a design doc before you implement it
+- **Plan** — quizzes on an implementation plan and architectural decisions
 
 ### Usage
 
@@ -37,12 +37,6 @@ Instead of explaining code to you, it reads an artifact and asks Socratic questi
 **Spec mode** (`/quiz-me on the spec`):
 
 ```
-> How do you want to be quizzed?
-> A) One at a time — I ask a question, you answer, I give feedback, then we move on (recommended)
-> B) All at once — I give you all questions upfront, you answer them all, then I grade
-
-a
-
 Question 1 of 6:
 ForecastSnapshot stores throughput_snapshot as a JSONField rather than
 normalizing it into rows. Why?
@@ -56,17 +50,21 @@ added). If you only stored the p50/p85/p95 dates, you'd know the forecast
 changed but not why.
 
 Question 2 of 6:
-The DataProvider protocol defines fetch_work_items and fetch_deployments.
-If someone builds a Jira provider but Jira doesn't expose deployment data
-— what should they do, and does the current protocol design allow for it?
+DataProvider is defined as a Protocol, not an abstract base class.
+What's the practical difference for someone building a Jira provider?
 
-> the application should handle missing data. Provider should not crash though
+> less boilerplate, no need to inherit from base class
 
-Partially correct. Right — the app should handle missing data gracefully
-and the provider shouldn't crash. But the current protocol design doesn't
-explicitly document this: fetch_deployments returns list[DeployEvent] with
-no empty-list contract stated. A provider with no deployment data should
-return [] — but that convention needs to be explicit.
+You've got the ergonomics right. But what does "no need to inherit" mean
+for an existing Jira client class that already has the right methods —
+does it need to change at all to satisfy the interface?
+
+> Protocol will require no changes as long as the interface is respected
+
+Exactly — structural subtyping. The class doesn't know it's a DataProvider,
+it just happens to match the shape. The tradeoff: with ABC, Python raises
+at instantiation if a method is missing. With Protocol, that safety moves
+to the type checker.
 
 ...
 
@@ -158,7 +156,7 @@ Which one lets an existing class satisfy the interface without inheriting from i
 
 The fastest way to understand something is to build it yourself. This skill prevents the temptation of asking Claude to "just write this one thing" — it holds the line so you do the learning. Use it when you have a spec ready and want to implement it as a deliberate practice session.
 
-Pairs well with `quiz-me` (which tests comprehension before you build) and `grill-me` (which stress-tests your design decisions).
+Pairs well with `quiz-me` (active recall before you build) and `grill-me` (stress-tests your design decisions).
 
 ---
 

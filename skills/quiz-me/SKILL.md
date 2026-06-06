@@ -28,18 +28,7 @@ Three modes, detected from context or user request:
 
 If ambiguous, ask the user which artifact to quiz on before proceeding.
 
-## Step 2: Ask mode preference
-
-Ask once, briefly, in plain English:
-> "How do you want to be quizzed?
-> - **A) One at a time** — I ask a question, you answer, I give feedback, then we move on (recommended)
-> - **B) All at once** — I give you all questions upfront, you answer them all, then I grade
->
-> Default is A."
-
-If no preference expressed, use one-at-a-time (Socratic).
-
-## Step 3: Generate 5–7 questions
+## Step 2: Generate 5–7 questions
 
 Read the artifact carefully. Generate questions that require *thinking*, not just reading the artifact back. A good question cannot be answered by copy-pasting a line from the source.
 
@@ -66,26 +55,19 @@ Read the artifact carefully. Generate questions that require *thinking*, not jus
 
 Scale to what's in the artifact — a two-line fix warrants different depth than a full system design.
 
-## Step 4: Run the quiz
+## Step 3: Run the quiz
 
-**One-at-a-time mode:**
 1. Ask one question
 2. Wait for the answer
 3. Grade it — see Grading below
 4. Move to the next
 5. Final summary: X/Y + one observation
 
-**All-at-once mode:**
-1. List all questions numbered
-2. Wait for all answers
-3. Grade each in sequence with feedback
-4. Final summary: X/Y + one observation
-
 ## Grading
 
 Correct = understands the *why*, not just the *what*. Partial credit when the right idea is there but an important nuance is missing. Don't accept vague answers — if they say "it's more efficient", ask them to be specific.
 
-**On partial or wrong answers (one-at-a-time mode only):** ask one follow-up question that exposes the gap rather than explaining it — let them reason to the answer. Only reveal the correction if they miss the follow-up too.
+**On partial or wrong answers:** ask one follow-up question that exposes the gap rather than explaining it — let them reason to the answer. Only reveal the correction if they miss the follow-up too.
 
 Good follow-up patterns:
 - "You said X — what happens when [edge case Y]? Does your answer still hold?"
